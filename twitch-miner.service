@@ -1,0 +1,19 @@
+[Unit]
+Description=Twitch Drops Miner (headless) - daily 8h window
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# %h = home directory of the user this unit runs as. To run it as your normal
+# user, add:  User=youruser
+WorkingDirectory=%h/twitch-miner
+ExecStart=/bin/bash %h/twitch-miner/daily_window.sh
+# Window + in-window crash recovery live in daily_window.sh; systemd starts it
+# once per day via twitch-miner-daily.timer and never relaunches on its own.
+Restart=no
+RuntimeMaxSec=8h20m
+TimeoutStopSec=30
+MemoryMax=256M
+NoNewPrivileges=true
+PrivateTmp=true

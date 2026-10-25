@@ -1,0 +1,9 @@
+env/
+TwitchDropsMiner/
+token.json
+cookies.jar
+miner.log
+settings.json
+ACTIVATE.txt
+__pycache__/
+*.pyc
